@@ -8,7 +8,6 @@ using namespace std;
 
 vector<pair<int,int>> graph[20001];
 int cost[20001];    //shortest distance 
-bool found[20001];  //shortest path already found
 priority_queue<pair<int,int>> vertices;  //vertices to which the shortest path not yet found
 int V, E;
 int K;
@@ -34,12 +33,9 @@ int main(){
 
     while(!vertices.empty()){
         cur = vertices.top().second; vertices.pop();
-        if(found[cur]) continue;
-        found[cur] = true;
 
         //relaxation of edges
         for(auto it:graph[cur]){
-            if(found[it.first]) continue;
             if(cost[cur] + it.second < cost[it.first]){
                 cost[it.first] = cost[cur] + it.second;
                 vertices.push({-cost[it.first], it.first});
