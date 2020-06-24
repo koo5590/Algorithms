@@ -132,7 +132,7 @@ int main(){
 변수에 값을 할당하는 코드를 넣어놓고, 두 구현 방식에서 수행 속도에 차이가 있는지 보기 위해 간단한 실험을 해보았다. 
 ~~~cpp
 for(auto it:graph[cur]){
-            if(found[it.first]) continue;
+            //if(found[it.first]) continue; 수정 전 
             for(int i=0; i<100000000; i++)
                 int test = i;
             if(cost[cur] + it.second < cost[it.first]){
