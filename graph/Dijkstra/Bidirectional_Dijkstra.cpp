@@ -49,10 +49,10 @@ void Dijkstra(int src, int dest){
         //relax each edge from the current node
         for(auto edge:graph_f[to]){
             //update current shortest path
-            if(!forward_visited.count(edge.first)) {
-                if(dist_f[edge.first] > cost + edge.second)
-                    dist_f[edge.first] = cost + edge.second;
+            if(!forward_visited.count(edge.first) && dist_f[edge.first] > cost + edge.second) {
+                dist_f[edge.first] = cost + edge.second;
                 forward_p.push({-(cost + edge.second), edge.first});
+               
             }
         }
 
@@ -67,9 +67,8 @@ void Dijkstra(int src, int dest){
         //relax each edge from the current node
         for(auto edge:graph_b[from]){
             //update current shortest path
-            if(!backward_visited.count(edge.first)) {
-                if(dist_b[edge.first] > cost + edge.second)
-                    dist_b[edge.first] = cost + edge.second;
+            if(!backward_visited.count(edge.first) && dist_b[edge.first] > cost + edge.second) {
+                dist_b[edge.first] = cost + edge.second;
                 backward_p.push({-(cost + edge.second), edge.first});
             }
         }
@@ -86,7 +85,7 @@ void Dijkstra(int src, int dest){
         //if smaller than the current min value
         if(dist_b[v]!=INT_MAX && dist_f[v]!=INT_MAX &&
            min_cost > dist_b[v]+dist_f[v]){
-            min_cost = dist_b[v] + dist_f[v];
+                min_cost = dist_b[v] + dist_f[v];
         }
     }
 
