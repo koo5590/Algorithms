@@ -1,5 +1,5 @@
 # Algorithms
-Algorithm practices
+Problem Solving
 
 https://www.acmicpc.net/
 https://leetcode.com/
